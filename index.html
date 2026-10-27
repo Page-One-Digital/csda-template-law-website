@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sterling & Associates Law Group | Premier Legal Counsel</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#0A192F',
+                            800: '#112240',
+                            700: '#1D3557',
+                        },
+                        gold: {
+                            500: '#D4AF37',
+                            600: '#C5A059',
+                            400: '#E6C687'
+                        },
+                        charcoal: '#212529'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Smooth scrolling with offset for sticky header */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #FFF2B2 50%, #C5A059 100%);
+        }
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #E6C687 0%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-bg {
+            background: linear-gradient(to right, rgba(10, 25, 47, 0.95), rgba(17, 34, 64, 0.85)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        /* Hide scrollbars for carousel */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-charcoal text-gray-200 font-sans antialiased selection:bg-gold-500 selection:text-navy-900">
+
+    <!-- Top Bar: Location & Emergency Contact -->
+    <div class="bg-navy-900 border-b border-navy-800 text-xs py-2 px-4 sm:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-4">
+                <span class="flex items-center gap-1.5 text-gold-400">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span id="detected-location-label">Detecting location...</span>
+                </span>
+                <span class="hidden md:inline text-gray-500">|</span>
+                <span class="hidden md:flex items-center gap-1.5 text-gray-300">
+                    <i class="fa-solid fa-clock"></i> Mon - Fri: 8:00 AM - 6:00 PM (Local Time)
+                </span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="tel:18005553425" class="flex items-center gap-1.5 font-semibold text-gold-400 hover:text-gold-500 transition">
+                    <i class="fa-solid fa-phone-volume"></i> 24/7 Crisis Hotline: <span id="top-hotline">+1 (800) 555-LEGAL</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Navigation Bar -->
+    <header id="navbar" class="sticky top-0 z-50 bg-navy-900/95 backdrop-blur-md border-b border-navy-800 shadow-xl transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded bg-gold-500 flex items-center justify-center text-navy-900 font-serif font-bold text-xl shadow-md group-hover:scale-105 transition">
+                    S
+                </div>
+                <div>
+                    <span class="font-serif text-xl sm:text-2xl font-bold tracking-wide text-white block">STERLING</span>
+                    <span class="text-[10px] uppercase tracking-widest text-gold-400 font-semibold block -mt-1">& Associates Law Group</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden lg:flex items-center gap-8 font-medium text-sm text-gray-300">
+                <a href="#overview" class="hover:text-gold-400 transition">Overview</a>
+                <a href="#jurisdiction" class="hover:text-gold-400 transition">Jurisdiction Info</a>
+                <a href="#practices" class="hover:text-gold-400 transition">Practice Areas</a>
+                <a href="#attorneys" class="hover:text-gold-400 transition">Our Attorneys</a>
+                <a href="#testimonials" class="hover:text-gold-400 transition">Results & Reviews</a>
+                <a href="#contact" class="hover:text-gold-400 transition">Contact</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <div class="hidden sm:flex items-center gap-4">
+                <a href="#evaluation" onclick="scrollToSection(event, 'evaluation')" class="bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-5 py-2.5 rounded shadow-lg hover:shadow-gold-500/20 transition duration-200 text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-scale-balanced"></i> Free Case Evaluation
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="lg:hidden text-gray-200 hover:text-gold-400 text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-navy-800 border-b border-navy-700 px-6 py-4 space-y-3 font-medium">
+            <a href="#overview" class="block text-gray-300 hover:text-gold-400 py-1" onclick="toggleMobileMenu()">Overview</a>
+            <a href="#jurisdiction" class="block text-gray-300 hover:text-gold-400 py-1" onclick="toggleMobileMenu()">Jurisdiction Info</a>
+            <a href="#practices" class="block text-gray-300 hover:text-gold-400 py-1" onclick="toggleMobileMenu()">Practice Areas</a>
+            <a href="#attorneys" class="block text-gray-300 hover:text-gold-400 py-1" onclick="toggleMobileMenu()">Our Attorneys</a>
+            <a href="#testimonials" class="block text-gray-300 hover:text-gold-400 py-1" onclick="toggleMobileMenu()">Results & Reviews</a>
+            <a href="#contact" class="block text-gray-300 hover:text-gold-400 py-1" onclick="toggleMobileMenu()">Contact</a>
+            <div class="pt-2">
+                <a href="#evaluation" onclick="toggleMobileMenu(); scrollToSection(event, 'evaluation');" class="block text-center bg-gold-500 text-navy-900 font-semibold py-2.5 rounded">
+                    Free Case Evaluation
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-bg min-h-[90vh] flex items-center relative overflow-hidden py-20 px-4 sm:px-8">
+        <div class="absolute inset-0 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:32px_32px] opacity-5"></div>
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <!-- Left Column: Content -->
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-navy-800 border border-gold-500/30 text-gold-400 text-xs font-semibold tracking-wider uppercase">
+                    <i class="fa-solid fa-award"></i> Elite Trial Advocacy & Legal Counsel
+                </div>
+                <h1 class="font-serif text-4xl sm:text-6xl font-bold text-white leading-tight">
+                    Uncompromising Defense. <br>
+                    <span class="text-gold-gradient">Unmatched Results.</span>
+                </h1>
+                <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                    With over 35 years of combined courtroom experience across high-stakes corporate litigation, complex personal injury, and criminal defense, Sterling & Associates secures justice when it matters most.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    <a href="#evaluation" onclick="scrollToSection(event, 'evaluation')" class="w-full sm:w-auto bg-gold-500 hover:bg-gold-600 text-navy-900 font-bold px-8 py-4 rounded shadow-xl hover:scale-105 transition duration-200 text-center flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-gavel"></i> Free Case Evaluation
+                    </a>
+                    <a href="#practices" onclick="scrollToSection(event, 'practices')" class="w-full sm:w-auto bg-navy-800/80 hover:bg-navy-700 text-white border border-gray-600 font-semibold px-8 py-4 rounded transition duration-200 text-center">
+                        Explore Practice Areas
+                    </a>
+                </div>
+
+                <!-- Credibility Badges -->
+                <div class="pt-8 border-t border-navy-800/80 grid grid-cols-3 gap-4 text-center lg:text-left">
+                    <div>
+                        <p class="font-serif text-2xl sm:text-3xl font-bold text-gold-400">$500M+</p>
+                        <p class="text-xs text-gray-400 uppercase tracking-wider mt-1">Recovered for Clients</p>
+                    </div>
+                    <div>
+                        <p class="font-serif text-2xl sm:text-3xl font-bold text-gold-400">98%</p>
+                        <p class="text-xs text-gray-400 uppercase tracking-wider mt-1">Trial Success Rate</p>
+                    </div>
+                    <div>
+                        <p class="font-serif text-2xl sm:text-3xl font-bold text-gold-400">35+ Yrs</p>
+                        <p class="text-xs text-gray-400 uppercase tracking-wider mt-1">Combined Expertise</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Quick Case Review Card -->
+            <div class="lg:col-span-5 bg-navy-800/90 border border-gold-500/20 p-6 sm:p-8 rounded-xl shadow-2xl backdrop-blur-md">
+                <div class="text-center pb-6 border-b border-navy-700">
+                    <h3 class="font-serif text-2xl font-bold text-white">Speak With An Attorney</h3>
+                    <p class="text-sm text-gray-400 mt-1">Confidential consultation within 2 hours</p>
+                </div>
+                <form id="hero-quick-form" onsubmit="handleQuickSubmit(event)" class="space-y-4 pt-6">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1">Full Name</label>
+                        <input type="text" required class="w-full bg-navy-900 border border-navy-700 rounded px-4 py-3 text-sm text-white focus:border-gold-500 focus:outline-none transition" placeholder="John Doe">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1">Phone Number</label>
+                        <input type="tel" required class="w-full bg-navy-900 border border-navy-700 rounded px-4 py-3 text-sm text-white focus:border-gold-500 focus:outline-none transition" placeholder="+1 (555) 000-0000">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1">Legal Matter</label>
+                        <select class="w-full bg-navy-900 border border-navy-700 rounded px-4 py-3 text-sm text-white focus:border-gold-500 focus:outline-none transition">
+                            <option>Personal Injury / Accident</option>
+                            <option>Family Law & Divorce</option>
+                            <option>Corporate Litigation</option>
+                            <option>Criminal Defense</option>
+                            <option>Estate Planning / Trusts</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="w-full bg-gold-500 hover:bg-gold-600 text-navy-900 font-bold py-3.5 rounded transition duration-200 shadow-lg text-sm uppercase tracking-wider">
+                        Request Immediate Callback
+                    </button>
+                    <p class="text-[11px] text-gray-400 text-center flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-lock text-gold-400"></i> Attorney-Client Privilege Protected
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dynamic Location / Regional Legal Notice Section -->
+    <section id="jurisdiction" class="bg-navy-900 py-12 border-y border-navy-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+            <div class="bg-navy-800 border border-gold-500/30 rounded-xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-lg bg-gold-500/10 text-gold-400 flex items-center justify-center text-2xl flex-shrink-0 mt-1">
+                        <i class="fa-solid fa-earth-americas"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-gold-400 font-semibold block mb-1">Jurisdiction & Localization Notice</span>
+                        <h3 id="regional-title" class="font-serif text-xl sm:text-2xl font-bold text-white">Loading regional legal framework...</h3>
+                        <p id="regional-desc" class="text-sm text-gray-300 mt-2 leading-relaxed">
+                            Sterling & Associates operates through licensed partners and affiliated counsel across major international and domestic jurisdictions to ensure full regulatory compliance.
+                        </p>
+                    </div>
+                </div>
+                <div class="flex-shrink-0 w-full md:w-auto text-center">
+                    <a href="#contact" onclick="scrollToSection(event, 'contact')" class="inline-block bg-navy-900 hover:bg-navy-700 text-gold-400 border border-gold-500/50 px-6 py-3 rounded text-sm font-semibold transition">
+                        Verify Local Office
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Firm Overview Section -->
+    <section id="overview" class="py-20 bg-charcoal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-semibold text-gold-400 uppercase tracking-widest block mb-2">The Sterling Standard</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">Excellence Without Compromise</h2>
+                <p class="text-gray-400 mt-4 text-sm sm:text-base leading-relaxed">
+                    Founded on the principles of rigorous preparation, aggressive advocacy, and unwavering ethical standards, Sterling & Associates represents corporations, executives, and individuals in their most critical legal moments.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-navy-800 border border-navy-700 p-8 rounded-xl shadow-lg hover:border-gold-500/50 transition duration-300 group">
+                    <div class="w-14 h-14 rounded-lg bg-gold-500/10 text-gold-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-gold-500 group-hover:text-navy-900 transition duration-300">
+                        <i class="fa-solid fa-chess-knight"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-white mb-3">Strategic Trial Readiness</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Insurance carriers and opposing counsel know we prepare every case as if it is going to trial. This uncompromising posture commands maximum settlement value and courtroom victories.
+                    </p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-navy-800 border border-navy-700 p-8 rounded-xl shadow-lg hover:border-gold-500/50 transition duration-300 group">
+                    <div class="w-14 h-14 rounded-lg bg-gold-500/10 text-gold-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-gold-500 group-hover:text-navy-900 transition duration-300">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-white mb-3">Absolute Confidentiality</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        We safeguard your reputation, proprietary assets, and personal privacy with military-grade encryption and strict attorney-client privilege protocols.
+                    </p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-navy-800 border border-navy-700 p-8 rounded-xl shadow-lg hover:border-gold-500/50 transition duration-300 group">
+                    <div class="w-14 h-14 rounded-lg bg-gold-500/10 text-gold-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-gold-500 group-hover:text-navy-900 transition duration-300">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-white mb-3">Global Reach & Local Insight</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Equipped to handle cross-border disputes, multi-jurisdictional regulatory investigations, and nuanced local court procedures with equal proficiency.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice Areas Section -->
+    <section id="practices" class="py-20 bg-navy-900 border-t border-navy-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-semibold text-gold-400 uppercase tracking-widest block mb-2">Comprehensive Legal Services</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">Our Practice Areas</h2>
+                <p class="text-gray-400 mt-4 text-sm sm:text-base">
+                    Specialized legal departments led by recognized industry authorities delivering focused, results-driven advocacy.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Practice 1 -->
+                <div class="bg-navy-800 border border-navy-700 rounded-xl overflow-hidden shadow-xl hover:border-gold-500 transition duration-300 flex flex-col">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=800&q=80" alt="Personal Injury" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 rounded bg-gold-500/10 text-gold-400 flex items-center justify-center text-lg mb-4">
+                                <i class="fa-solid fa-car-burst"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold text-white mb-2">Personal Injury</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                Aggressive representation for catastrophic injuries, medical malpractice, and wrongful death claims ensuring maximum financial recovery.
+                            </p>
+                        </div>
+                        <a href="#evaluation" onclick="scrollToSection(event, 'evaluation')" class="text-gold-400 hover:text-gold-500 text-sm font-semibold flex items-center gap-2">
+                            Evaluate Your Claim <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Practice 2 -->
+                <div class="bg-navy-800 border border-navy-700 rounded-xl overflow-hidden shadow-xl hover:border-gold-500 transition duration-300 flex flex-col">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1589216595469-801d1da324c3?auto=format&fit=crop&w=800&q=80" alt="Family Law" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 rounded bg-gold-500/10 text-gold-400 flex items-center justify-center text-lg mb-4">
+                                <i class="fa-solid fa-people-roof"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold text-white mb-2">Family Law & Divorce</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                Discretionary and protective counsel for high-net-worth divorce, complex asset division, child custody, and nuptial agreements.
+                            </p>
+                        </div>
+                        <a href="#evaluation" onclick="scrollToSection(event, 'evaluation')" class="text-gold-400 hover:text-gold-500 text-sm font-semibold flex items-center gap-2">
+                            Evaluate Your Claim <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Practice 3 -->
+                <div class="bg-navy-800 border border-navy-700 rounded-xl overflow-hidden shadow-xl hover:border-gold-500 transition duration-300 flex flex-col">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Corporate Litigation" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 rounded bg-gold-500/10 text-gold-400 flex items-center justify-center text-lg mb-4">
+                                <i class="fa-solid fa-building-columns"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold text-white mb-2">Corporate Litigation</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                Strategic defense and prosecution in shareholder disputes, breach of contract, intellectual property theft, and regulatory actions.
+                            </p>
+                        </div>
+                        <a href="#evaluation" onclick="scrollToSection(event, 'evaluation')" class="text-gold-400 hover:text-gold-500 text-sm font-semibold flex items-center gap-2">
+                            Evaluate Your Claim <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Practice 4 -->
+                <div class="bg-navy-800 border border-navy-700 rounded-xl overflow-hidden shadow-xl hover:border-gold-500 transition duration-300 flex flex-col">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80" alt="Criminal Defense" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 rounded bg-gold-500/10 text-gold-400 flex items-center justify-center text-lg mb-4">
+                                <i class="fa-solid fa-handcuffs"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold text-white mb-2">Criminal Defense</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                Vigorous protection of constitutional rights against white-collar federal charges, state felonies, and complex DUI/DWI offenses.
+                            </p>
+                        </div>
+                        <a href="#evaluation" onclick="scrollToSection(event, 'evaluation')" class="text-gold-400 hover:text-gold-500 text-sm font-semibold flex items-center gap-2">
+                            Evaluate Your Claim <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Practice 5 -->
+                <div class="bg-navy-800 border border-navy-700 rounded-xl overflow-hidden shadow-xl hover:border-gold-500 transition duration-300 flex flex-col md:col-span-2 lg:col-span-2">
+                    <div class="grid grid-cols-1 md:grid-cols-2 h-full">
+                        <div class="h-48 md:h-full overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80" alt="Estate Planning" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-navy-900 via-transparent"></div>
+                        </div>
+                        <div class="p-6 flex flex-col justify-between">
+                            <div>
+                                <div class="w-10 h-10 rounded bg-gold-500/10 text-gold-400 flex items-center justify-center text-lg mb-4">
+                                    <i class="fa-solid fa-file-shield"></i>
+                                </div>
+                                <h3 class="font-serif text-xl font-bold text-white mb-2">Estate Planning & Asset Protection</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                    Comprehensive wealth preservation, irrevocable family trusts, probate litigation avoidance, and succession planning tailored for high-net-worth individuals and multi-generational family legacies.
+                                </p>
+                            </div>
+                            <a href="#evaluation" onclick="scrollToSection(event, 'evaluation')" class="text-gold-400 hover:text-gold-500 text-sm font-semibold flex items-center gap-2">
+                                Evaluate Your Claim <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Multi-Step Free Case Evaluation Wizard -->
+    <section id="evaluation" class="py-20 bg-charcoal relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-8">
+            <div class="text-center mb-12">
+                <span class="text-xs font-semibold text-gold-400 uppercase tracking-widest block mb-2">Confidential & Secure</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">Interactive Free Case Evaluation</h2>
+                <p class="text-gray-400 mt-2 text-sm sm:text-base">
+                    Answer a few quick questions so our senior partners can assess your legal standing immediately.
+                </p>
+            </div>
+
+            <div class="bg-navy-800 border border-gold-500/30 rounded-2xl shadow-2xl p-6 sm:p-10">
+                <!-- Progress Bar -->
+                <div class="mb-8">
+                    <div class="flex justify-between text-xs font-semibold uppercase tracking-wider text-gold-400 mb-2">
+                        <span id="step-indicator-1" class="text-gold-400">1. Practice Area</span>
+                        <span id="step-indicator-2" class="text-gray-500">2. Case Details</span>
+                        <span id="step-indicator-3" class="text-gray-500">3. Contact Info</span>
+                    </div>
+                    <div class="h-2 w-full bg-navy-900 rounded-full overflow-hidden">
+                        <div id="wizard-progress-bar" class="h-full bg-gold-500 transition-all duration-300 w-1/3"></div>
+                    </div>
+                </div>
+
+                <form id="evaluation-wizard-form" onsubmit="submitWizard(event)">
+                    <!-- Step 1: Legal Category -->
+                    <div id="wizard-step-1" class="space-y-6">
+                        <h3 class="font-serif text-xl font-bold text-white">What area of law does your case involve?</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <label class="flex items-center p-4 bg-navy-900 border border-navy-700 rounded-xl cursor-pointer hover:border-gold-500 transition group">
+                                <input type="radio" name="practice_area" value="Personal Injury" required class="text-gold-500 focus:ring-gold-500 h-4 w-4">
+                                <span class="ml-3 text-sm font-medium text-gray-200 group-hover:text-white">Personal Injury / Accident</span>
+                            </label>
+                            <label class="flex items-center p-4 bg-navy-900 border border-navy-700 rounded-xl cursor-pointer hover:border-gold-500 transition group">
+                                <input type="radio" name="practice_area" value="Family Law" class="text-gold-500 focus:ring-gold-500 h-4 w-4">
+                                <span class="ml-3 text-sm font-medium text-gray-200 group-hover:text-white">Family Law & Divorce</span>
+                            </label>
+                            <label class="flex items-center p-4 bg-navy-900 border border-navy-700 rounded-xl cursor-pointer hover:border-gold-500 transition group">
+                                <input type="radio" name="practice_area" value="Corporate Litigation" class="text-gold-500 focus:ring-gold-500 h-4 w-4">
+                                <span class="ml-3 text-sm font-medium text-gray-200 group-hover:text-white">Corporate Litigation</span>
+                            </label>
+                            <label class="flex items-center p-4 bg-navy-900 border border-navy-700 rounded-xl cursor-pointer hover:border-gold-500 transition group">
+                                <input type="radio" name="practice_area" value="Criminal Defense" class="text-gold-500 focus:ring-gold-500 h-4 w-4">
+                                <span class="ml-3 text-sm font-medium text-gray-200 group-hover:text-white">Criminal Defense</span>
+                            </label>
+                            <label class="flex items-center p-4 bg-navy-900 border border-navy-700 rounded-xl cursor-pointer hover:border-gold-500 transition group sm:col-span-2">
+                                <input type="radio" name="practice_area" value="Estate Planning" class="text-gold-500 focus:ring-gold-500 h-4 w-4">
+                                <span class="ml-3 text-sm font-medium text-gray-200 group-hover:text-white">Estate Planning / Asset Protection</span>
+                            </label>
+                        </div>
+                        <div class="flex justify-end pt-4">
+                            <button type="button" onclick="nextWizardStep(2)" class="bg-gold-500 hover:bg-gold-600 text-navy-900 font-bold px-8 py-3 rounded transition text-sm flex items-center gap-2">
+                                Next Step <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Case Details -->
+                    <div id="wizard-step-2" class="space-y-6 hidden">
+                        <h3 class="font-serif text-xl font-bold text-white">Please briefly describe your situation</h3>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Incident Date or Urgency</label>
+                            <select id="wizard-urgency" class="w-full bg-navy-900 border border-navy-700 rounded px-4 py-3 text-sm text-white focus:border-gold-500 focus:outline-none transition">
+                                <option>Immediate / Within the last 7 days</option>
+                                <option>Within the last 30 days</option>
+                                <option>Within the last 6 months</option>
+                                <option>Ongoing legal dispute</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Summary of Events</label>
+                            <textarea id="wizard-details" rows="4" required class="w-full bg-navy-900 border border-navy-700 rounded px-4 py-3 text-sm text-white focus:border-gold-500 focus:outline-none transition" placeholder="Please provide relevant details without sharing highly sensitive passwords or documents..."></textarea>
+                        </div>
+                        <div class="flex justify-between pt-4">
+                            <button type="button" onclick="prevWizardStep(1)" class="bg-navy-900 hover:bg-navy-700 text-gray-300 border border-gray-600 font-semibold px-6 py-3 rounded transition text-sm">
+                                Back
+                            </button>
+                            <button type="button" onclick="nextWizardStep(3)" class="bg-gold-500 hover:bg-gold-600 text-navy-900 font-bold px-8 py-3 rounded transition text-sm flex items-center gap-2">
+                                Next Step <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Contact Info -->
+                    <div id="wizard-step-3" class="space-y-6 hidden">
+                        <h3 class="font-serif text-xl font-bold text-white">Where should we send your evaluation?</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1">Full Name</label>
+                                <input type="text" id="wizard-name" required class="w-full bg-navy-900 border border-navy-700 rounded px-4 py-3 text-sm text-white focus:border-gold-500 focus:outline-none transition" placeholder="Jane Smith">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1">Phone Number</label>
+                                <input type="tel" id="wizard-phone" required class="w-full bg-navy-900 border border-navy-700 rounded px-4 py-3 text-sm text-white focus:border-gold-500 focus:outline-none transition" placeholder="+1 (555) 000-0000">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1">Email Address</label>
+                            <input type="email" id="wizard-email" required class="w-full bg-navy-900 border border-navy-700 rounded px-4 py-3 text-sm text-white focus:border-gold-500 focus:outline-none transition" placeholder="jane@example.com">
+                        </div>
+                        <div class="bg-navy-900 border border-navy-700 p-4 rounded-lg text-xs text-gray-400 flex items-start gap-3">
+                            <i class="fa-solid fa-shield-halved text-gold-400 text-base mt-0.5"></i>
+                            <p>Submitting this form establishes confidential attorney-client privilege. Your information will never be shared with third parties.</p>
+                        </div>
+                        <div class="flex justify-between pt-4">
+                            <button type="button" onclick="prevWizardStep(2)" class="bg-navy-900 hover:bg-navy-700 text-gray-300 border border-gray-600 font-semibold px-6 py-3 rounded transition text-sm">
+                                Back
+                            </button>
+                            <button type="submit" class="bg-gold-500 hover:bg-gold-600 text-navy-900 font-bold px-8 py-3 rounded transition text-sm uppercase tracking-wider flex items-center gap-2 shadow-lg">
+                                <i class="fa-solid fa-paper-plane"></i> Submit For Evaluation
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Success State Overlay (Hidden by default) -->
+                <div id="wizard-success" class="hidden text-center py-12 space-y-4">
+                    <div class="w-16 h-16 bg-gold-500 text-navy-900 rounded-full flex items-center justify-center text-3xl mx-auto shadow-xl">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-white">Evaluation Request Received</h3>
+                    <p class="text-gray-300 max-w-md mx-auto text-sm leading-relaxed">
+                        Thank you. A senior partner at Sterling & Associates has been assigned to your brief and will contact you via phone or secure email within 2 hours.
+                    </p>
+                    <button onclick="resetWizard()" class="mt-4 bg-navy-900 text-gold-400 border border-gold-500 px-6 py-2.5 rounded text-sm font-semibold hover:bg-navy-700 transition">
+                        Submit Another Inquiry
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Attorney Profiles Grid -->
+    <section id="attorneys" class="py-20 bg-navy-900 border-t border-navy-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-semibold text-gold-400 uppercase tracking-widest block mb-2">Elite Leadership</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">Our Partners & Senior Counsel</h2>
+                <p class="text-gray-400 mt-4 text-sm sm:text-base">
+                    Recognized by premier legal directories, our attorneys bring decades of trial mastery and uncompromising dedication to every client.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Attorney 1 -->
+                <div class="bg-navy-800 border border-navy-700 rounded-xl overflow-hidden shadow-xl hover:border-gold-500 transition duration-300 group">
+                    <div class="h-80 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" alt="Alistair Sterling" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <h3 class="font-serif text-2xl font-bold text-white">Alistair Sterling, Esq.</h3>
+                            <p class="text-gold-400 text-sm font-semibold">Managing Senior Partner</p>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div>
+                            <span class="text-xs text-gray-400 uppercase tracking-wider block font-semibold mb-1">Bar Admissions</span>
+                            <p class="text-sm text-gray-200">Supreme Court Bar, Federal District Courts, International Court of Arbitration.</p>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-400 uppercase tracking-wider block font-semibold mb-1">Notable Case Result</span>
+                            <p class="text-sm text-gold-400 font-medium">$142M Corporate Antitrust Settlement</p>
+                        </div>
+                        <div class="pt-4 border-t border-navy-700 flex justify-between items-center">
+                            <span class="text-xs text-gray-400">30+ Years Experience</span>
+                            <a href="#evaluation" onclick="scrollToSection(event, 'evaluation')" class="text-gold-400 hover:text-gold-500 text-sm font-semibold flex items-center gap-1">
+                                Retain <i class="fa-solid fa-chevron-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Attorney 2 -->
+                <div class="bg-navy-800 border border-navy-700 rounded-xl overflow-hidden shadow-xl hover:border-gold-500 transition duration-300 group">
+                    <div class="h-80 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Victoria Vance" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <h3 class="font-serif text-2xl font-bold text-white">Victoria Vance, Esq.</h3>
+                            <p class="text-gold-400 text-sm font-semibold">Senior Partner - Litigation</p>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div>
+                            <span class="text-xs text-gray-400 uppercase tracking-wider block font-semibold mb-1">Bar Admissions</span>
+                            <p class="text-sm text-gray-200">State Bar, Appellate Division, Federal Circuit Court of Appeals.</p>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-400 uppercase tracking-wider block font-semibold mb-1">Notable Case Result</span>
+                            <p class="text-sm text-gold-400 font-medium">Complete Acquittal in High-Stakes Federal White-Collar Trial</p>
+                        </div>
+                        <div class="pt-4 border-t border-navy-700 flex justify-between items-center">
+                            <span class="text-xs text-gray-400">22+ Years Experience</span>
+                            <a href="#evaluation" onclick="scrollToSection(event, 'evaluation')" class="text-gold-400 hover:text-gold-500 text-sm font-semibold flex items-center gap-1">
+                                Retain <i class="fa-solid fa-chevron-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Attorney 3 -->
+                <div class="bg-navy-800 border border-navy-700 rounded-xl overflow-hidden shadow-xl hover:border-gold-500 transition duration-300 group">
+                    <div class="h-80 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80" alt="Marcus Thorne" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <h3 class="font-serif text-2xl font-bold text-white">Marcus Thorne, Esq.</h3>
+                            <p class="text-gold-400 text-sm font-semibold">Partner - Personal Injury & Torts</p>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div>
+                            <span class="text-xs text-gray-400 uppercase tracking-wider block font-semibold mb-1">Bar Admissions</span>
+                            <p class="text-sm text-gray-200">State Trial Bar, National Board of Trial Advocacy Certified.</p>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-400 uppercase tracking-wider block font-semibold mb-1">Notable Case Result</span>
+                            <p class="text-sm text-gold-400 font-medium">$85M Verdict in Catastrophic Product Liability Claim</p>
+                        </div>
+                        <div class="pt-4 border-t border-navy-700 flex justify-between items-center">
+                            <span class="text-xs text-gray-400">18+ Years Experience</span>
+                            <a href="#evaluation" onclick="scrollToSection(event, 'evaluation')" class="text-gold-400 hover:text-gold-500 text-sm font-semibold flex items-center gap-1">
+                                Retain <i class="fa-solid fa-chevron-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Testimonial Carousel Section -->
+    <section id="testimonials" class="py-20 bg-charcoal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-semibold text-gold-400 uppercase tracking-widest block mb-2">Client Testimonials</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">Trusted by Leaders & Families</h2>
+                <p class="text-gray-400 mt-4 text-sm sm:text-base">
+                    Read unedited accounts from clients whose lives and businesses were safeguarded by our legal team.
+                </p>
+            </div>
+
+            <!-- Testimonial Slider Container -->
+            <div class="relative max-w-4xl mx-auto">
+                <div id="testimonial-container" class="overflow-hidden">
+                    <div id="testimonial-track" class="flex transition-transform duration-500 ease-in-out">
+                        <!-- Slide 1 -->
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-navy-800 border border-gold-500/30 p-8 sm:p-12 rounded-2xl shadow-xl relative">
+                                <div class="text-gold-400 text-4xl mb-4 font-serif">“</div>
+                                <p class="text-gray-200 text-base sm:text-lg italic leading-relaxed mb-6">
+                                    When our corporation faced a hostile takeover and fabricated regulatory claims, Alistair Sterling and his team deployed an uncompromising defense that dismantled the plaintiff's case in record time. They are true titans in the courtroom.
+                                </p>
+                                <div class="flex items-center justify-between border-t border-navy-700 pt-6">
+                                    <div>
+                                        <h4 class="font-serif font-bold text-white text-lg">Jonathan R.</h4>
+          <p class="text-xs text-gold-400">CEO, Global Logistics Corporation</p>
+                                    </div>
+                                    <div class="flex text-gold-500 text-sm gap-1">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-navy-800 border border-gold-500/30 p-8 sm:p-12 rounded-2xl shadow-xl relative">
+                                <div class="text-gold-400 text-4xl mb-4 font-serif">“</div>
+                                <p class="text-gray-200 text-base sm:text-lg italic leading-relaxed mb-6">
+                                    Victoria Vance handled my complex high-net-worth divorce with extraordinary discretion, empathy, and fierce protection of my family's assets. I couldn't have asked for more capable counsel during the most difficult chapter of my life.
+                                </p>
+                                <div class="flex items-center justify-between border-t border-navy-700 pt-6">
+                                    <div>
+                                        <h4 class="font-serif font-bold text-white text-lg">Eleanor M.</h4>
+                                        <p class="text-xs text-gold-400">Private Client</p>
+                                    </div>
+                                    <div class="flex text-gold-500 text-sm gap-1">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-navy-800 border border-gold-500/30 p-8 sm:p-12 rounded-2xl shadow-xl relative">
+                                <div class="text-gold-400 text-4xl mb-4 font-serif">“</div>
+                                <p class="text-gray-200 text-base sm:text-lg italic leading-relaxed mb-6">
+                                    Marcus Thorne secured a settlement that completely covered our medical needs and future security after a devastating highway accident. Sterling & Associates treats you like family while fighting like warriors.
+                                </p>
+                                <div class="flex items-center justify-between border-t border-navy-700 pt-6">
+                                    <div>
+                                        <h4 class="font-serif font-bold text-white text-lg">David & Sarah K.</h4>
+                                        <p class="text-xs text-gold-400">Personal Injury Clients</p>
+                                    </div>
+                                    <div class="flex text-gold-500 text-sm gap-1">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel Controls -->
+                <div class="flex justify-center items-center gap-4 mt-8">
+                    <button onclick="prevTestimonial()" class="w-12 h-12 rounded-full bg-navy-800 border border-navy-700 text-gold-400 hover:bg-gold-500 hover:text-navy-900 transition flex items-center justify-center shadow-lg">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <div id="carousel-dots" class="flex gap-2">
+                        <span class="w-3 h-3 rounded-full bg-gold-500 cursor-pointer" onclick="goToTestimonial(0)"></span>
+                        <span class="w-3 h-3 rounded-full bg-navy-700 cursor-pointer" onclick="goToTestimonial(1)"></span>
+                        <span class="w-3 h-3 rounded-full bg-navy-700 cursor-pointer" onclick="goToTestimonial(2)"></span>
+                    </div>
+                    <button onclick="nextTestimonial()" class="w-12 h-12 rounded-full bg-navy-800 border border-navy-700 text-gold-400 hover:bg-gold-500 hover:text-navy-900 transition flex items-center justify-center shadow-lg">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secure Consultation Contact Form Section -->
+    <section id="contact" class="py-20 bg-navy-900 border-t border-navy-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Contact Info Column -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-xs font-semibold text-gold-400 uppercase tracking-widest block">Get In Touch</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">Secure Your Consultation Today</h2>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Do not navigate complex legal challenges alone. Contact our headquarters or schedule a secure video consultation with our senior partners.
+                    </p>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded bg-gold-500/10 text-gold-400 flex items-center justify-center text-lg flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Headquarters</h4>
+                                <p class="text-sm text-gray-400">100 Wall Street, 42nd Floor, Financial District, New York, NY 10005</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded bg-gold-500/10 text-gold-400 flex items-center justify-center text-lg flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Direct Line</h4>
+                                <p id="footer-phone" class="text-sm text-gray-400">+1 (800) 555-LEGAL / +1 (212) 555-0199</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded bg-gold-500/10 text-gold-400 flex items-center justify-center text-lg flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Secure Email</h4>
+                                <p class="text-sm text-gray-400">counsel@sterlinglawgroup.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secure Consultation Form Column -->
+                <div class="lg:col-span-7 bg-navy-800 border border-gold-500/30 p-8 sm:p-10 rounded-2xl shadow-2xl">
+                    <h3 class="font-serif text-2xl font-bold text-white mb-2">Schedule Consultation</h3>
+                    <p class="text-xs text-gray-400 mb-6">All submissions are protected by strict attorney-client privilege protocols.</p>
+                    
+                    <form id="secure-contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1">Full Name</label>
+                                <input type="text" required class="w-full bg-navy-900 border border-navy-700 rounded px-4 py-3 text-sm text-white focus:border-gold-500 focus:outline-none transition" placeholder="Alexander Wright">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1">Phone Number</label>
+                                <input type="tel" required class="w-full bg-navy-900 border border-navy-700 rounded px-4 py-3 text-sm text-white focus:border-gold-500 focus:outline-none transition" placeholder="+1 (555) 000-0000">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1">Email Address</label>
+                            <input type="email" required class="w-full bg-navy-900 border border-navy-700 rounded px-4 py-3 text-sm text-white focus:border-gold-500 focus:outline-none transition" placeholder="alexander@company.com">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1">Message / Brief Description</label>
+                            <textarea rows="4" required class="w-full bg-navy-900 border border-navy-700 rounded px-4 py-3 text-sm text-white focus:border-gold-500 focus:outline-none transition" placeholder="Outline your legal inquiry..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gold-500 hover:bg-gold-600 text-navy-900 font-bold py-3.5 rounded transition duration-200 shadow-lg text-sm uppercase tracking-wider flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-lock"></i> Send Secure Message
+                        </button>
+                    </form>
+                    <div id="contact-success" class="hidden text-center py-8 space-y-3">
+                        <div class="w-12 h-12 bg-gold-500 text-navy-900 rounded-full flex items-center justify-center text-2xl mx-auto">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <h4 class="font-serif text-xl font-bold text-white">Message Transmitted Securely</h4>
+                        <p class="text-sm text-gray-300">Your inquiry has been encrypted and routed to our intake partners. We will respond promptly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-950 border-t border-navy-900 text-gray-400 py-12 px-4 sm:px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div class="space-y-4 md:col-span-1">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded bg-gold-500 flex items-center justify-center text-navy-900 font-serif font-bold text-lg">
+                        S
+                    </div>
+                    <span class="font-serif text-lg font-bold text-white">STERLING</span>
+                </div>
+                <p class="text-xs leading-relaxed">
+                    Premier legal counsel specializing in corporate litigation, high-stakes defense, and personal injury advocacy across multiple jurisdictions.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-4">Practice Areas</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#practices" class="hover:text-gold-400 transition">Personal Injury</a></li>
+                    <li><a href="#practices" class="hover:text-gold-400 transition">Family Law & Divorce</a></li>
+                    <li><a href="#practices" class="hover:text-gold-400 transition">Corporate Litigation</a></li>
+                    <li><a href="#practices" class="hover:text-gold-400 transition">Criminal Defense</a></li>
+                    <li><a href="#practices" class="hover:text-gold-400 transition">Estate Planning</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-4">Quick Navigation</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#overview" class="hover:text-gold-400 transition">Firm Overview</a></li>
+                    <li><a href="#jurisdiction" class="hover:text-gold-400 transition">Jurisdiction Info</a></li>
+                    <li><a href="#attorneys" class="hover:text-gold-400 transition">Our Attorneys</a></li>
+                    <li><a href="#testimonials" class="hover:text-gold-400 transition">Client Reviews</a></li>
+                    <li><a href="#evaluation" class="hover:text-gold-400 transition">Case Evaluation</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-4">Legal Disclaimer</h4>
+                <p class="text-[11px] leading-relaxed text-gray-500">
+                    The information contained on this website is for general informational purposes only and does not constitute legal advice. Communication through this site does not establish an attorney-client relationship until a formal retainer agreement is executed.
+                </p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-navy-900 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 gap-4">
+            <p>&copy; 2026 Sterling & Associates Law Group. All Rights Reserved.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-gold-400 transition">Privacy Policy</a>
+                <a href="#" class="hover:text-gold-400 transition">Terms of Service</a>
+                <a href="#" class="hover:text-gold-400 transition">Attorney Advertising</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactivity, Centered Scrolling, and Client Country/Location Adaptation -->
+    <script>
+        // 1. Precise Centered Scrolling Handler as requested
+        function scrollToSection(event, targetId) {
+            if (event) event.preventDefault();
+            const element = document.getElementById(targetId);
+            if (!element) return;
+
+            const elementRect = element.getBoundingClientRect();
+            const absoluteElementTop = elementRect.top + window.pageYOffset;
+            const middle = absoluteElementTop - (window.innerHeight / 2) + (elementRect.height / 2);
+
+            window.scrollTo({
+                top: middle,
+                behavior: 'smooth'
+            });
+
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        }
+
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // 2. Client Location & Country Detection & Regional Info Adaptation
+        window.addEventListener('DOMContentLoaded', () => {
+            detectClientJurisdiction();
+            startTestimonialAutoSlide();
+        });
+
+        function detectClientJurisdiction() {
+            // Check timezone / language or user context to adapt regional info
+            const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+            const lang = navigator.language || navigator.userLanguage || "";
+            
+            let regionName = "International / Global";
+            let hotline = "+1 (800) 555-LEGAL";
+            let desc = "Sterling & Associates operates through licensed partners and affiliated counsel across major international and domestic jurisdictions to ensure full regulatory compliance.";
+
+            if (tz.includes("Johannesburg") || tz.includes("Africa") || lang.includes("ZA")) {
+                regionName = "South Africa (Gauteng / Centurion Affiliated Counsel)";
+                hotline = "+27 (0800) 555-3425";
+                desc = "Showing South African jurisdiction advisory: Compliant with Legal Practice Act (LPA) standards and regional court representation across Pretoria, Johannesburg, and major provincial divisions.";
+            } else if (tz.includes("Europe") || lang.includes("en-GB") || lang.includes("de") || lang.includes("fr")) {
+                regionName = "European Union / UK Jurisdiction";
+                hotline = "+44 (0800) 555-0199";
+                desc = "Showing European jurisdiction advisory: GDPR-compliant consultations, cross-border corporate arbitration, and UK/EU regulatory defense coordination.";
+            } else if (tz.includes("America") || lang.includes("en-US")) {
+                regionName = "United States Federal & State Jurisdiction";
+                hotline = "+1 (800) 555-LEGAL";
+                desc = "Showing US jurisdiction advisory: Federal District Court admissions, multi-district litigation (MDL) coordination, and state bar compliance across all 50 states.";
+            }
+
+            document.getElementById('detected-location-label').innerText = regionName;
+            document.getElementById('top-hotline').innerText = hotline;
+            document.getElementById('regional-title').innerText = "Active Regional Jurisdiction: " + regionName;
+            document.getElementById('regional-desc').innerText = desc;
+            document.getElementById('footer-phone').innerText = hotline + " / Main HQ";
+        }
+
+        // 3. Multi-Step Wizard Navigation
+        let currentStep = 1;
+        function nextWizardStep(step) {
+            if (step === 2) {
+                // Validate step 1 radio selected
+                const selectedPractice = document.querySelector('input[name="practice_area"]:checked');
+                if (!selectedPractice) {
+                    alert('Please select a practice area to continue.');
+                    return;
+                }
+            }
+            if (step === 3) {
+                const details = document.getElementById('wizard-details').value;
+                if (!details.trim()) {
+                    alert('Please provide a brief description of your case.');
+                    return;
+                }
+            }
+
+            document.getElementById(`wizard-step-${currentStep}`).classList.add('hidden');
+            document.getElementById(`wizard-step-${step}`).classList.remove('hidden');
+            
+            // Update indicators & progress bar
+            if (step === 2) {
+                document.getElementById('wizard-progress-bar').style.width = '66%';
+                document.getElementById('step-indicator-2').className = 'text-gold-400 font-bold';
+            } else if (step === 3) {
+                document.getElementById('wizard-progress-bar').style.width = '100%';
+                document.getElementById('step-indicator-3').className = 'text-gold-400 font-bold';
+            }
+            currentStep = step;
+        }
+
+        function prevWizardStep(step) {
+            document.getElementById(`wizard-step-${currentStep}`).classList.add('hidden');
+            document.getElementById(`wizard-step-${step}`).classList.remove('hidden');
+
+            if (step === 1) {
+                document.getElementById('wizard-progress-bar').style.width = '33%';
+                document.getElementById('step-indicator-2').className = 'text-gray-500';
+            } else if (step === 2) {
+                document.getElementById('wizard-progress-bar').style.width = '66%';
+                document.getElementById('step-indicator-3').className = 'text-gray-500';
+            }
+            currentStep = step;
+        }
+
+        function submitWizard(event) {
+            event.preventDefault();
+            document.getElementById('wizard-step-3').classList.add('hidden');
+            document.getElementById('wizard-success').classList.remove('hidden');
+            document.getElementById('wizard-progress-bar').style.width = '100%';
+        }
+
+        function resetWizard() {
+            document.getElementById('evaluation-wizard-form').reset();
+            document.getElementById('wizard-success').classList.add('hidden');
+            document.getElementById('wizard-step-1').classList.remove('hidden');
+            currentStep = 1;
+            document.getElementById('wizard-progress-bar').style.width = '33%';
+            document.getElementById('step-indicator-2').className = 'text-gray-500';
+            document.getElementById('step-indicator-3').className = 'text-gray-500';
+        }
+
+        // Quick Form Submission
+        function handleQuickSubmit(event) {
+            event.preventDefault();
+            alert('Callback request received! A senior case manager will reach out to you within 2 hours.');
+            event.target.reset();
+        }
+
+        // Contact Form Submission
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            event.target.style.display = 'none';
+            document.getElementById('contact-success').classList.remove('hidden');
+        }
+
+        // 4. Testimonial Carousel Logic
+        let currentTestimonial = 0;
+        const totalTestimonials = 3;
+
+        function updateTestimonialCarousel() {
+            const track = document.getElementById('testimonial-track');
+            track.style.transform = `translateX(-${currentTestimonial * 100}%)`;
+
+            // Update dots
+            const dots = document.getElementById('carousel-dots').children;
+            for (let i = 0; i < dots.length; i++) {
+                if (i === currentTestimonial) {
+                    dots[i].className = 'w-3 h-3 rounded-full bg-gold-500 cursor-pointer';
+                } else {
+                    dots[i].className = 'w-3 h-3 rounded-full bg-navy-700 cursor-pointer';
+                }
+            }
+        }
+
+        function nextTestimonial() {
+            currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
+            updateTestimonialCarousel();
+        }
+
+        function prevTestimonial() {
+            currentTestimonial = (currentTestimonial - 1 + totalTestimonials) % totalTestimonials;
+            updateTestimonialCarousel();
+        }
+
+        function goToTestimonial(index) {
+            currentTestimonial = index;
+            updateTestimonialCarousel();
+        }
+
+        function startTestimonialAutoSlide() {
+            setInterval(() => {
+                nextTestimonial();
+            }, 7000);
+        }
+    </script>
+</body>
+</html>
